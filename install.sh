@@ -111,11 +111,12 @@ main() {
         price=$(echo "$best_item" | jq -r '.price')
         profit=$(echo "$best_item" | jq -r '.profitPerHour')
         cooldown=$(echo "$best_item" | jq -r '.cooldownSeconds')
-
+        profit_per_hour_per_price=$(echo "scale=2; $profit / $price" | bc)
         echo -e "${purple}============================${rest}"
         echo -e "${green}Best item to buy:${yellow} $best_item_id ${green}in section:${yellow} $section${rest}"
         echo -e "${blue}Price: ${cyan}$price${rest}"
         echo -e "${blue}Profit per Hour: ${cyan}$profit${rest}"
+        echo -e "${blue}Profit per Hour per Price: ${cyan}$profit_per_hour_per_price${rest}"
         echo ""
 
         # Get current balanceCoins
