@@ -97,7 +97,9 @@ get_best_item() {
 # Function to wait for cooldown period
 wait_for_cooldown() {
     cooldown_seconds="$1"
-    echo -e "${yellow}Upgrade is on cooldown. Waiting for cooldown period of ${cyan}$cooldown_seconds${yellow} seconds...${rest}"
+    minutes=$(($cooldown_seconds / 60))
+    seconds=$(($cooldown_seconds % 60))
+    echo -e "${yellow}Upgrade is on cooldown. Waiting for cooldown period of ${cyan}$minutes : $seconds ${yellow} seconds...${rest}"
     sleep "$cooldown_seconds"
 }
 
